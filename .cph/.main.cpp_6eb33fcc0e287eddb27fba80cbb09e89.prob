@@ -1,0 +1,1 @@
+{"group":"local","interactive":false,"local":true,"memoryLimit":1024,"name":"Local: main","srcPath":"c:\\Users\\ramesh\\vscode\\main.cpp","tests":[{"id":1598350656648,"input":"1 1 1\n3\n5\n4\n","output":"20"}],"timeLimit":3000,"url":"c:\\Users\\ramesh\\vscode\\main.cpp"}

@@ -1,0 +1,1 @@
+{"name":"Local: salesman","url":"c:\\Users\\ramesh\\vscode\\salesman.cpp","tests":[{"id":1600881584238,"input":"15000\n364\n48","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ramesh\\vscode\\salesman.cpp","group":"local","local":true}

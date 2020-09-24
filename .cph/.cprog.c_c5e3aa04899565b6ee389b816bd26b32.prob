@@ -1,0 +1,1 @@
+{"group":"local","interactive":false,"local":true,"memoryLimit":1024,"name":"Local: cprog","srcPath":"c:\\Users\\ramesh\\vscode\\cprog.c","tests":[{"id":1599478141945,"input":"asdfgh","output":""}],"timeLimit":3000,"url":"c:\\Users\\ramesh\\vscode\\cprog.c"}
