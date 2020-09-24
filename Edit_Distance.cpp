@@ -35,20 +35,30 @@ void solve(){
    cin >> s;
    string s2;
    cin >> s2;
-   map<int,char> mp;
    for(int i=0;i<s.length();i++){
-       mp[s[i]]++;
+       for(int j=0;j<s2.length();j++){
+           if(s[i] == s2[j]){
+               s[i] = '*';
+               s2[j] = '*';
+           }
+       }
    }
+   int res = 0;
+   for(int i=0;i<s.length();i++){
+       if(s[i] !='*'){
+           res++;
+       }
+   }
+   int bes =0;
    for(int i=0;i<s2.length();i++){
-      if(mp[s2[i]]>0){ mp[s2[i]]--;}
-      else mp[s2[i]]++;
+       if(s2[i] != '*'){
+           bes++;
+       }
    }
-   int res;
-   for(auto x: mp){
-       res+=x.first;
-   }
-   cout << res << endl;
+   cout <<max(res,bes) << endl;
 }
+   
+
 
 int main(){
    boost;
