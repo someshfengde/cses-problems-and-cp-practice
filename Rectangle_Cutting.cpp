@@ -29,25 +29,23 @@ Because you are so dear...
 using namespace std;
 int const maxn=2e9;
 int const naxn=1e9;
-int dp[5005][5001];
+int dp[501][501];
 void solve(){
-   string s;
-   cin >> s;
-   string s2;
-   cin >> s2;
-   for(int i=1;i<=s.size();i++){
-       dp[i][0] = i;
-   }
-   for(int j=1;j<=s2.size();j++){dp[0][j] = j;}
-   for(int i=1;i<=s.size();i++){
-       for(int j=1; j<=s2.size();j++){
-           dp[i][j] = 1e9;
-           if(s[i-1]==s2[j-1])dp[i][j] = dp[i-1][j-1];
-           dp[i][j] = min({dp[i][j]-1, dp[i-1][j] ,dp[i][j-1] ,dp[i-1][j-1]})+1;
+   int a,b;
+   cin >> a >> b;   
+   for(int i=1;i<=a;i++){
+       for(int j=1;j<=b;j++){
+           if(i^j)dp[i][j]= 1e9;
+           for(int k =1;k<i;k++)
+           dp[i][j] = min(dp[i][j],dp[k][j] + dp[i-k][j]+1);
+           for(int k=1;k<j;k++)
+           dp[i][j] = min(dp[i][j],dp[i][k]+dp[i][j-k]+1);
        }
    }
-   cout << dp[s.size()][s2.size()];
+   cout << dp[a][b];
+
 }
+
 int main(){
    boost;
         solve();

@@ -29,25 +29,31 @@ Because you are so dear...
 using namespace std;
 int const maxn=2e9;
 int const naxn=1e9;
-int dp[5005][5001];
+int dp[100002];
 void solve(){
-   string s;
-   cin >> s;
-   string s2;
-   cin >> s2;
-   for(int i=1;i<=s.size();i++){
-       dp[i][0] = i;
+      int n;
+   cin >> n;
+   memset(dp,0,100002);
+   vector<int> coins(n);
+   for(int i=0;i<n;i++){
+       cin>> coins[i];
    }
-   for(int j=1;j<=s2.size();j++){dp[0][j] = j;}
-   for(int i=1;i<=s.size();i++){
-       for(int j=1; j<=s2.size();j++){
-           dp[i][j] = 1e9;
-           if(s[i-1]==s2[j-1])dp[i][j] = dp[i-1][j-1];
-           dp[i][j] = min({dp[i][j]-1, dp[i-1][j] ,dp[i][j-1] ,dp[i-1][j-1]})+1;
-       }
-   }
-   cout << dp[s.size()][s2.size()];
+  dp[0]=1;
+for(int i=0;i<n;i++){
+    for(int j=100010;j>=0;j--){
+        if(j>=coins[i])dp[j]|= dp[j-coins[i]];
+    }
 }
+vector<int>ans;
+for(int i=1;i<1e5;i++){
+    if(dp[i])ans.pb(i);
+}
+cout << ans.size() << endl;
+for(auto x : ans){
+    cout << x << " " ;
+}
+}
+
 int main(){
    boost;
         solve();

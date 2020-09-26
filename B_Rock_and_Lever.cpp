@@ -25,31 +25,33 @@ Because you are so dear...
 #define pb push_back
 #define pai pair<int, int>
 #define ar array
-
+#define int ll
 using namespace std;
 int const maxn=2e9;
 int const naxn=1e9;
-int dp[5005][5001];
+
 void solve(){
-   string s;
-   cin >> s;
-   string s2;
-   cin >> s2;
-   for(int i=1;i<=s.size();i++){
-       dp[i][0] = i;
-   }
-   for(int j=1;j<=s2.size();j++){dp[0][j] = j;}
-   for(int i=1;i<=s.size();i++){
-       for(int j=1; j<=s2.size();j++){
-           dp[i][j] = 1e9;
-           if(s[i-1]==s2[j-1])dp[i][j] = dp[i-1][j-1];
-           dp[i][j] = min({dp[i][j]-1, dp[i-1][j] ,dp[i][j-1] ,dp[i-1][j-1]})+1;
+   int n;
+   cin >> n;
+   int a[n];
+   for(int i=0;i<n;i++)cin>>a[i];
+   int cnt =0;
+   for(int i=0;i<n;i++){
+       for(int j=i+1;j<n;j++){
+           if((a[i]&a[j])>=(a[i]^a[j])){
+               cnt++;
+           }
        }
    }
-   cout << dp[s.size()][s2.size()];
+
+   cout <<cnt<< endl;
 }
-int main(){
+
+int32_t main(){
    boost;
+   int t;
+   cin>> t;
+   while(t--)
         solve();
     
 }

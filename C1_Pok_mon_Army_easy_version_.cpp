@@ -28,28 +28,44 @@ Because you are so dear...
 
 using namespace std;
 int const maxn=2e9;
-int const naxn=1e9;
-int dp[5005][5001];
+int const naxn=3e5;
+
+int a[300002];
 void solve(){
-   string s;
-   cin >> s;
-   string s2;
-   cin >> s2;
-   for(int i=1;i<=s.size();i++){
-       dp[i][0] = i;
+   int n,q;
+   cin>> n >> q;
+   
+   for(int i=1;i<=n;i++){
+       cin>> a[i];
    }
-   for(int j=1;j<=s2.size();j++){dp[0][j] = j;}
-   for(int i=1;i<=s.size();i++){
-       for(int j=1; j<=s2.size();j++){
-           dp[i][j] = 1e9;
-           if(s[i-1]==s2[j-1])dp[i][j] = dp[i-1][j-1];
-           dp[i][j] = min({dp[i][j]-1, dp[i-1][j] ,dp[i][j-1] ,dp[i-1][j-1]})+1;
+   int sum =-1e7;
+   for(int i=1;i<=n;i++){
+       vector<int> pok;
+       for(int j=i;j<=n;j+=2){
+           pok.pb(a[j]);
        }
+       int z=2;
+       int cs=0;
+       for(auto x:pok){
+           if(z%2==0){
+               cs+=x;
+           }
+           else{
+               cs-=x;
+           }
+           z++;
+       }
+      
+       sum=max(cs,sum);
    }
-   cout << dp[s.size()][s2.size()];
+   cout << sum << endl;
 }
+
 int main(){
    boost;
+   int t;
+   cin >>t;
+   while(t--)
         solve();
     
 }

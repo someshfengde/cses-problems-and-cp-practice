@@ -28,26 +28,15 @@ Because you are so dear...
 
 using namespace std;
 int const maxn=2e9;
-int const naxn=1e9;
-int dp[5005][5001];
+int const naxn=1e9+7;
+int n;
+ll dp[n+1];
 void solve(){
-   string s;
-   cin >> s;
-   string s2;
-   cin >> s2;
-   for(int i=1;i<=s.size();i++){
-       dp[i][0] = i;
-   }
-   for(int j=1;j<=s2.size();j++){dp[0][j] = j;}
-   for(int i=1;i<=s.size();i++){
-       for(int j=1; j<=s2.size();j++){
-           dp[i][j] = 1e9;
-           if(s[i-1]==s2[j-1])dp[i][j] = dp[i-1][j-1];
-           dp[i][j] = min({dp[i][j]-1, dp[i-1][j] ,dp[i][j-1] ,dp[i-1][j-1]})+1;
-       }
-   }
-   cout << dp[s.size()][s2.size()];
+   cin >> n;
+   int a[n];
+   
 }
+
 int main(){
    boost;
         solve();
