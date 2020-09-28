@@ -25,31 +25,42 @@ Because you are so dear...
 #define pb push_back
 #define pai pair<int, int>
 #define ar array
-
+#define int ll
 using namespace std;
-int const maxn=2e9;
-int const naxn=1e9+7;
-int n;
-ll dp[500*(500+1)/2];
+int const nax=1e8+1;
+int const M=1e5;
+ll c[(int)2*100*(int)1e5+1];
+int n,a[M];
 void solve(){
    cin >> n;
-   int s = n*(n+1)/2;
-   if(s&1){
-       cout << 0 << endl;
-       return;
+   int s1=0,s2=0;
+   for(int i=0;i<n;i++){
+       cin>>a[i];
+       if(a[i]<0)s1-=a[i];
+       else s2+=a[i];
    }
-   s/=2;
-   dp[0] =1;
-   for(int i=1;i<=n;i++){
-       for(int j=i*(i+1)/2;j>=i;j--){
-           dp[j] =(dp[j]+dp[j-i])%naxn;
-       }
-   }
-   cout << dp[s]*((naxn+1)/2)%naxn<< endl;
+   ll ans = 0;
+   int t=0;
+   ++c[s1];
+  for(int i=0;i<n;i++){
+      t+=a[i];
+      for(int j=0;j*j<=s2;j++){
+          if(s1+(t-j*j)>=0)ans+=c[s1+(t-j*j)];
+      }
+      ++c[s1+t];
+  }
+  
+   cout << ans << endl;
+   memset(c,0,4*(s1+s2+1));
 }
 
-int main(){
+int32_t main(){
    boost;
+   int t=1,z=1;
+   cin>>t;
+   while(t--){
+   cout<< "Case #"<< z <<  ": " ;
         solve();
-    
+        z++;
+    }
 }

@@ -27,29 +27,36 @@ Because you are so dear...
 #define ar array
 
 using namespace std;
-int const maxn=2e9;
-int const naxn=1e9+7;
+int const nax=2e5;
+int const M=1e9;
 int n;
-ll dp[500*(500+1)/2];
+ar<int,3> a[nax+1];
 void solve(){
-   cin >> n;
-   int s = n*(n+1)/2;
-   if(s&1){
-       cout << 0 << endl;
-       return;
+   cin>> n;
+   for(int i=0;i<n;i++){
+       cin >> a[i][1] >> a[i][0] >> a[i][2];
    }
-   s/=2;
-   dp[0] =1;
-   for(int i=1;i<=n;i++){
-       for(int j=i*(i+1)/2;j>=i;j--){
-           dp[j] =(dp[j]+dp[j-i])%naxn;
-       }
+   sort(a,a+n);
+   set<ar<int,2>> dp;
+   dp.insert({0,0});
+   ll ldp =0;
+   for(int i=0;i<n;i++){
+       auto it =dp.lower_bound({a[i][1]});
+       --it;
+       ldp=max(ldp,(*it)[1]+a[i][2]);
+       dp.insert({a[i][0],ldp});
+
+
    }
-   cout << dp[s]*((naxn+1)/2)%naxn<< endl;
+   cout << (*--dp.end())[1]<< endl;
 }
 
 int main(){
    boost;
+   int t=1,z=1;
+   //cin>>t;
+   while(t--){
+   //cout<< "Case #"<< z++ <<  ": " ;
         solve();
-    
+    }
 }
